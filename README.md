@@ -1,6 +1,4 @@
-# Austin Cultural Centers Analysis
-
-## Overview
+# Overview
 
 Cultural centers, serving as venues for diverse groups to celebrate their heritage through activities and programs, hold significant
 importance in communities across the United States. These centers are crucial for preserving traditions and educating young 
