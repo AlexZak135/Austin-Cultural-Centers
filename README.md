@@ -1,5 +1,6 @@
-# Overview
+# Evaluating Cultural Centers in Austin, Texas
 
+## Overview
 Cultural centers, serving as venues for diverse groups to celebrate their heritage through activities and programs, hold significant
 importance in communities across the United States. These centers are crucial for preserving traditions and educating young 
 generations about their family’s culture. They also provide opportunities for individuals to explore cultures beyond their own,
@@ -19,3 +20,9 @@ programs at the cultural centers. It also included quantitative questions, such 
 aspects of the centers. This research analyzed the responses to the open-ended questions using a range of Natural Language Processing
 (NLP) techniques, including term frequencies, term frequency-inverse document frequency, sentiment analysis, and topic modeling.
 Additionally, the results from the quantitative questions were analyzed to enhance the findings from the NLP techniques.
+
+## Code and Data
+This is the [R script](https://github.com/AlexZak135/Austin-Cultural-Centers/blob/87700fbb8cb4de6a5f227bdb9d2c39726c2ff0b9/Code/Austin-Cultural-Centers-Code.R) containing the code used for this analysis, and these are the [datasets](https://github.com/AlexZak135/Austin-Cultural-Centers/tree/87700fbb8cb4de6a5f227bdb9d2c39726c2ff0b9/Data) used in the R script.
+
+## Data Visualizations
+These are the five [Data Visualizations](https://github.com/AlexZak135/Austin-Cultural-Centers/tree/87700fbb8cb4de6a5f227bdb9d2c39726c2ff0b9/Outputs) that represent the findings from the NLP techniques used to analyze the open-ended survey questions.
