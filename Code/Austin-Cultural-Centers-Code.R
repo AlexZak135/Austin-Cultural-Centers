@@ -384,7 +384,7 @@ plot_means <- function(type) {
     labs(x = "", y = "Mean Compound Sentiment Score") +
     facet_wrap(~ prompt, scales = "free") +
     coord_flip() +
-    theme_custom(margin_size = -15) 
+    theme_custom(margin_size = -10) 
   
   # Dynamically set the titles of the plots
   if (type == "VADER") { 
