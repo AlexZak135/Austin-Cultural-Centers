@@ -1,6 +1,6 @@
 # Title: Austin Cultural Centers Analysis
 # Author: Alexander Zakrzeski
-# Date: May 5, 2024
+# Date: May 7, 2024
 
 # Part 1: Setup and Configuration
 
@@ -189,7 +189,7 @@ ggplot(frequencies, aes(x = reorder(ngram, n, FUN = sum), y = n,
   geom_hline(yintercept = 0, linewidth = 1.1, color = "#000000") + 
   scale_y_continuous(breaks = pretty_breaks(4), 
                      labels = label_number(drop0trailing = TRUE)) + 
-  scale_fill_manual(values = c("#c41230", "#FFAC1C", "#5e9732", "#0078ae")) +
+  scale_fill_manual(values = c("#c41230", "#ffac1c", "#5e9732", "#0078ae")) +
   labs(title = "Figure 1: Term Frequencies from Feedback on Cultural Centers",
        x = "", y = "Frequency") +
   guides(fill = guide_legend(title = "", reverse = TRUE)) +
@@ -260,7 +260,7 @@ ggplot(tfidf, aes(x = ngram, y = scaled_tf_idf, fill = alias)) +
   geom_hline(yintercept = 0, linewidth = 1.1, color = "#000000") +
   scale_x_discrete(labels = function(x) str_replace_all(x, "_.*", "")) +
   scale_y_continuous(labels = label_number(drop0trailing = TRUE)) +
-  scale_fill_manual(values = c("#0078ae", "#5e9732", "#FFAC1C", "#c41230")) +
+  scale_fill_manual(values = c("#0078ae", "#5e9732", "#ffac1c", "#c41230")) +
   labs(title = "Figure 2: TF-IDF Scores from Feedback on Cultural Centers",
        x = "", y = "Scaled TF-IDF Score (x100)") +
   guides(fill = guide_legend(title = "")) +
@@ -380,7 +380,7 @@ plot_means <- function(type) {
     scale_x_discrete(labels = function(x) str_replace_all(x, "_.*", "")) +
     scale_y_continuous(breaks = pretty_breaks(3), 
                        labels = label_number(drop0trailing = TRUE)) + 
-    scale_fill_manual(values = c("#0078ae", "#5e9732", "#FFAC1C", "#c41230")) +
+    scale_fill_manual(values = c("#0078ae", "#5e9732", "#ffac1c", "#c41230")) +
     labs(x = "", y = "Mean Compound Sentiment Score") +
     facet_wrap(~ prompt, scales = "free") +
     coord_flip() +
