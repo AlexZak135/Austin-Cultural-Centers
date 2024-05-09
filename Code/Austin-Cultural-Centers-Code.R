@@ -1,6 +1,6 @@
 # Title: Austin Cultural Centers Analysis
 # Author: Alexander Zakrzeski
-# Date: May 7, 2024
+# Date: May 8, 2024
 
 # Part 1: Setup and Configuration
 
@@ -324,10 +324,11 @@ means <- map_df(unique(df_qual$prompt), function(value) {
     } else { 
       processed2 <- processed2 |> 
         unnest_tokens(ngram, response, token = "ngrams", n = 1)
-      if (lexicon == "afinn" || lexicon == "bing") { 
+      if (lexicon == "afinn") {  
         processed2 <- processed2 |>
-          inner_join(get_sentiments(lexicon), by = c("ngram" = "word"))  
-      } else if (lexicon == "nrc") {
+          inner_join(get_sentiments(lexicon), by = c("ngram" = "word"), 
+                     relationship = "many-to-one")  
+      } else if (lexicon == "bing" || lexicon == "nrc") {  
         processed2 <- processed2 |>
           inner_join(get_sentiments(lexicon), by = c("ngram" = "word"), 
                      relationship = "many-to-many") 
