@@ -387,7 +387,7 @@ plot_means <- function(type) {
     coord_flip() +
     theme_custom(margin_size = -12.5) 
   
-  # Dynamically set the titles of the plots
+  # Dynamically set the title of the plot
   if (type == "VADER") { 
     plot <- plot +  
     ggtitle(label = str_squish("Figure 4: Mean Compound Sentiment Scores from 
