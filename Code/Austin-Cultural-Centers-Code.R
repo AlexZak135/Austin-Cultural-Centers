@@ -1,6 +1,6 @@
 # Title: Austin Cultural Centers Analysis
 # Author: Alexander Zakrzeski
-# Date: May 8, 2024
+# Date: June 24, 2024
 
 # Part 1: Setup and Configuration
 
@@ -284,12 +284,13 @@ sums <- map_df(unique(df_qual$prompt), function(value) {
                                              "Programs")),
            label = if_else( 
              sum > 0, "Positive", "Negative" 
-             ), 
+             ) |>  
+                   factor(levels = c("Positive", "Negative")),
            sum = if_else( 
              label == "Negative", sum * -1, sum 
              ),
-           ngram = reorder_within(str_to_title(ngram), sum, prompt, sep = "_"), 
-           label = factor(label, levels = c("Positive", "Negative"))) |> 
+           ngram = reorder_within(str_to_title(ngram), sum, prompt, 
+                                  sep = "_")) |>
     # Select the top eight positive or negative unigrams 
     slice_max(sum, n = 8, with_ties = FALSE) |>
     relocate(prompt)
