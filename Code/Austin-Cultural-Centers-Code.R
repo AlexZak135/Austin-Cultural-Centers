@@ -364,6 +364,9 @@ means <- map_df(unique(df_qual$prompt), function(value) {
   })
 })
 
+# Remove objects from global environment
+rm(incl_nt, neu_set)
+
 # Define a function to plot the mean sentiment scores in a faceted bar chart
 plot_means <- function(type) { 
   # Perform processing steps, including filtering and creating a new column 
