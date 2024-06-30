@@ -1,6 +1,6 @@
 # Title: Austin Cultural Centers Analysis
 # Author: Alexander Zakrzeski
-# Date: June 24, 2024
+# Date: June 30, 2024
 
 # Part 1: Setup and Configuration
 
@@ -129,7 +129,7 @@ df_quant <- read_csv("Austin-Cultural-Centers-Quantitative-Data.csv") |>
   relocate(id)
 
 # Generate n-grams (unigrams, bigrams, and trigrams) from the responses
-ngrams <- map_df(c(1:3), function(number) {  
+ngrams <- map_df(1:3, function(number) {  
   # Tokenize responses into n-grams with specified size "number" 
   processed <- df_qual |>
     unnest_tokens(ngram, response, token = "ngrams", n = number) |>
