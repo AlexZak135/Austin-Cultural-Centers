@@ -1,6 +1,6 @@
 # Title: Austin Cultural Centers Analysis
 # Author: Alexander Zakrzeski
-# Date: June 30, 2024
+# Date: September 14, 2024
 
 # Part 1: Setup and Configuration
 
@@ -345,8 +345,8 @@ means <- map_df(unique(df_qual$prompt), function(value) {
       processed2 <- processed2 |>
         mutate(score = case_when(
           sentiment == "positive" ~ 1,
-          sentiment == "negative" ~ -1,
-          TRUE ~ NA_real_ 
+          sentiment == "negative" ~ -1, 
+          .default = NA_real_ 
           )) |>
         drop_na(score) 
     } 
@@ -416,9 +416,7 @@ topic_modeling <- function(value, number) {
   # Process data and create a document-term matrix
   dtm <- ngrams |> 
     filter(prompt == value & type == "unigram") |>
-    group_by(ngram) |> 
-    mutate(n = n()) |> 
-    ungroup() |>
+    add_count(ngram) |>
     filter(between(n, 2, number) & !ngram %in% c("aachf", "aarc", "carver", 
                                                  "esb", "macc", "museum")) |> 
     select(-n) |>
