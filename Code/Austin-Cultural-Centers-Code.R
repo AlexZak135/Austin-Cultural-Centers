@@ -129,7 +129,7 @@ df_quant <- read_csv("Austin-Cultural-Centers-Quantitative-Data.csv") |>
   relocate(id)
 
 # Generate n-grams (unigrams, bigrams, and trigrams) from the responses
-ngrams <- map_df(1:3, function(number) {  
+ngrams <- map_dfr(1:3, function(number) {  
   # Tokenize responses into n-grams with specified size "number" 
   processed <- df_qual |>
     unnest_tokens(ngram, response, token = "ngrams", n = number) |>
@@ -182,7 +182,7 @@ frequencies <- ngrams |>
 # Create a faceted bar chart to display term frequencies
 ggplot(frequencies, aes(x = reorder(ngram, n, FUN = sum), y = n, 
                         fill = alias)) +
-  geom_col(width = 0.825, position = "stack") +
+  geom_col(width = 0.825) +
   geom_text(aes(label = after_stat(y), group = ngram),
             stat = "summary", fun = "sum",
             vjust = 0.25, hjust = -0.25, size = 5) + 
@@ -200,7 +200,7 @@ ggplot(frequencies, aes(x = reorder(ngram, n, FUN = sum), y = n,
 # Part 4: TF-IDF
 
 # Generate tf-idf for specific unigrams in responses to prompts
-tfidf <- map_df(unique(ngrams$prompt), function(value) {
+tfidf <- map_dfr(unique(ngrams$prompt), function(value) {
   # Process and compute tf-idf of unigrams  
   processed <- ngrams |>
     filter(prompt == value & type == "unigram") |>
@@ -271,7 +271,7 @@ ggplot(tfidf, aes(x = ngram, y = scaled_tf_idf, fill = alias)) +
 # Part 5: Sentiment Analysis
 
 # Generate sum sentiment scores for the top positive or negative unigrams
-sums <- map_df(unique(df_qual$prompt), function(value) { 
+sums <- map_dfr(unique(df_qual$prompt), function(value) { 
   # Filter for each unique prompt and tokenize the responses 
   processed <- df_qual |>
     filter(prompt == value) |>
@@ -311,9 +311,9 @@ ggplot(sums, aes(x = ngram, y = sum, fill = label)) +
   theme_custom(margin_size = -15, legend = TRUE)
 
 # Generate mean sentiment scores by alias using AFINN, Bing, NRC, and VADER
-means <- map_df(unique(df_qual$prompt), function(value) {
+means <- map_dfr(unique(df_qual$prompt), function(value) {
   # Process each sentiment lexicon for a given prompt
-  processed1 <- map_df(c("afinn", "bing", "nrc", "vader"), function(lexicon) {
+  processed1 <- map_dfr(c("afinn", "bing", "nrc", "vader"), function(lexicon) {
     processed2 <- df_qual |>
       filter(prompt == value)
     
@@ -447,7 +447,7 @@ lda3 <- topic_modeling("Fees", 14)
 lda4 <- topic_modeling("Programs", 20)
 
 # Generate an output containing the various topics and terms for the prompts  
-lda_output1 <- map2_df(c(lda1, lda2, lda3, lda4), unique(df_qual$prompt), ~ { 
+lda_output1 <- map2_dfr(c(lda1, lda2, lda3, lda4), unique(df_qual$prompt), ~ { 
   # Assign values to lda and value for processing
   lda = .x
   value = .y 
@@ -497,7 +497,7 @@ plot_lda <- function(value) {
 plot_topics <- plot_lda("Programs")
 
 # Generate an output that displays the document-topic probabilities
-lda_output2 <- map2_df(c(lda1, lda2, lda3, lda4), unique(df_qual$prompt), ~ {  
+lda_output2 <- map2_dfr(c(lda1, lda2, lda3, lda4), unique(df_qual$prompt), ~ {  
   # Assign values to lda and value for processing
   lda = .x
   value = .y 
