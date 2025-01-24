@@ -22,7 +22,7 @@ aspects of the centers. This research analyzed the responses to the open-ended q
 Additionally, the results from the quantitative questions were analyzed to enhance the findings from the NLP techniques.
 
 ## Files
-These are the [Python and R scripts](https://github.com/AlexZak135/Austin-Cultural-Centers/tree/main/Code) containing the code used for this analysis, and these are the [datasets](https://github.com/AlexZak135/Austin-Cultural-Centers/tree/main/Data) used in the scripts. 
+This is the [R script](https://github.com/AlexZak135/Austin-Cultural-Centers/blob/main/Code/Austin-Cultural-Centers-Code.R) containing the code used for this analysis, and these are the [datasets](https://github.com/AlexZak135/Austin-Cultural-Centers/tree/main/Data) used in the R script.
 
 ## Outputs
 These are the [outputs](https://github.com/AlexZak135/Austin-Cultural-Centers/tree/main/Outputs) that represent the main findings from the NLP techniques used to analyze the open-ended survey questions.
